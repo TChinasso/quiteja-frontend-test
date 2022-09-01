@@ -32,6 +32,7 @@ Nesse projeto, você devera desenvolver uma aplicação consumindo uma Api exter
 - Utilização de libs do eco sistema Vue
 - consumo de API's Rest
 - Componentização
+- Paginação server-side
 - Clean Code
 - Conhecimentos em material design
 - Reatividade com as respostas retornadas da API
