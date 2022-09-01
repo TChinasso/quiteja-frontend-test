@@ -2,19 +2,26 @@
   <v-app>
     <v-navigation-drawer
         app
+        v-model="nav"
       >
         <v-list
           nav
         >
-          <v-list-item @click="changeView('table')">
+          <v-list-item link to="/">
             <v-list-item-icon>
-              <v-icon>mdi-folder</v-icon>
+              <v-icon>mdi-home</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Home</v-list-item-title>
+          </v-list-item>
+          <v-list-item link @click="changeView('table')">
+            <v-list-item-icon>
+              <v-icon>mdi-table</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Data-table</v-list-item-title>
           </v-list-item>
-          <v-list-item @click="changeView('card')">
+          <v-list-item link @click="changeView('card')">
             <v-list-item-icon>
-              <v-icon>mdi-account-multiple</v-icon>
+              <v-icon>mdi-card-account-details</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Cards</v-list-item-title>
           </v-list-item>
@@ -22,15 +29,14 @@
       </v-navigation-drawer>
     <v-app-bar app color="grey lighten-2" dark>
       <div class="d-flex align-center">
-        <router-link to="/">
-          <v-img
+        <v-img
           alt="Quiteja Logo"
           class="shrink mr-2"
           src="@/assets/logo.png"
           transition="scale-transition"
           width="40"
+          @click="nav = !nav"
         />
-        </router-link>
       </div>
     </v-app-bar>
 
@@ -47,6 +53,7 @@ export default {
   name: "App",
 
   data: () => ({
+    nav: true,
     items: [
       { title: "Dashboard", icon: "mdi-view-dashboard" },
       { title: "Photos", icon: "mdi-image" },

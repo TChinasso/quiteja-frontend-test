@@ -19,7 +19,7 @@
     ></v-progress-circular>
     </div>
     <v-row v-if="!loading" class="pa-6">
-      <v-col cols="3" v-for="(user, index) in usersList" :key="index">
+      <v-col :cols="$vuetify.breakpoint.xs ? '12' : '3'" v-for="(user, index) in usersList" :key="index">
         <v-card max-width="400" max-height="400">
           <template slot="progress">
             <v-progress-linear
@@ -124,7 +124,6 @@ export default {
       deep: true,
       async handler(newValue) {
         this.loading = true;
-        debugger;
         await this.getUsers(newValue);
         this.updateParams(newValue);
         this.loading = false;
