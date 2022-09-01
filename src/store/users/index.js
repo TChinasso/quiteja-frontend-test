@@ -31,8 +31,8 @@ export default {
   actions: {
     async get ({ commit },params = null){
       let payload = {
-        page: params.page || 1,
-        limit: params.itemsPerPage || 10
+        page: params?.page || 1,
+        limit: params?.itemsPerPage || 10
       }
       const {data, error} = await usersService.get(payload)
       if (error) return

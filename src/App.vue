@@ -1,57 +1,63 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
+    <v-navigation-drawer
+        app
+      >
+        <v-list
+          nav
+        >
+          <v-list-item @click="changeView('table')">
+            <v-list-item-icon>
+              <v-icon>mdi-folder</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Data-table</v-list-item-title>
+          </v-list-item>
+          <v-list-item @click="changeView('card')">
+            <v-list-item-icon>
+              <v-icon>mdi-account-multiple</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Cards</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-navigation-drawer>
+    <v-app-bar app color="grey lighten-2" dark>
       <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
+        <router-link to="/">
+          <v-img
+          alt="Quiteja Logo"
           class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+          src="@/assets/logo.png"
           transition="scale-transition"
           width="40"
         />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
+        </router-link>
       </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
     </v-app-bar>
 
     <v-main>
       <v-container>
-        <router-view/>
+        <router-view />
       </v-container>
     </v-main>
   </v-app>
 </template>
 
 <script>
-
 export default {
-  name: 'App',
+  name: "App",
 
   data: () => ({
-    //
+    items: [
+      { title: "Dashboard", icon: "mdi-view-dashboard" },
+      { title: "Photos", icon: "mdi-image" },
+      { title: "About", icon: "mdi-help-box" },
+    ],
+    right: null,
   }),
+  methods: {
+    changeView(view) {
+      this.$router.push({path: '/users', query : {...this.$route.query, view}})
+    }
+  },
 };
 </script>
