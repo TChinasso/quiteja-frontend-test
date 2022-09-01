@@ -11,7 +11,7 @@
     >
       <template v-slot:[`item.firstName`]="{ item }">
         <td>
-          <v-avatar class="mr-2">
+          <v-avatar class="mr-2" v-if="!$vuetify.breakpoint.xs">
             <img :src="item.picture" :alt="item.firstName" />
           </v-avatar>
           <span class="text-capitalize">{{ `${item.title} ` }}</span
@@ -23,7 +23,7 @@
         </td>
       </template>
       <template v-slot:[`item.action`]="{ item }">
-        <td class="d-flex align-center justify-end">
+        <td class="d-flex align-center justify-end" v-if="!$vuetify.breakpoint.xs">
           <v-menu offset-y>
             <template v-slot:activator="{ on }">
               <v-btn icon v-on="on">
@@ -39,6 +39,24 @@
               </v-list-item>
             </v-list>
           </v-menu>
+        </td>
+        <td v-else>
+          <v-btn
+              color="deep-purple lighten-2"
+              text
+              outlined
+              @click="openEditUser(item)"
+            >
+              <v-icon>mdi-pencil</v-icon>
+            </v-btn>
+            <v-btn
+              color="red lighten-2"
+              text
+              outlined
+              @click="openDeleteUser(item)"
+            >
+              <v-icon>mdi-trash-can</v-icon>
+            </v-btn>
         </td>
       </template>
     </v-data-table>
