@@ -1,6 +1,7 @@
 # quiteja-frontend-test
 
 styleless finish: 2:08 hrs
+mobile and cards: 3:40 hrs
 
 ## Project setup
 ```
