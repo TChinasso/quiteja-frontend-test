@@ -1,5 +1,7 @@
 # quiteja-frontend-test
 
+styleless finish: 2:08 hrs
+
 ## Project setup
 ```
 npm install
